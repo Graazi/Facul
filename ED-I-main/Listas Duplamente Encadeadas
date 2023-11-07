@@ -1,0 +1,13 @@
+LSE 
+
+INFO/PROX -> INFO/PROX -> INFO/PROX
+                               NULL
+LDE
+NULL                                    NULL
+ANT/INF/PROX -> ANT/INF/PROX -> ANT/INF/PROX
+
+Listas Duplamentes Encadeadas com Nó Descritor 
+
+Nó Descritor -> Guarda informações sobre a lista 
+Obs: São atributos da lista/sobre a lista
+     Não precisa saber a quantidade

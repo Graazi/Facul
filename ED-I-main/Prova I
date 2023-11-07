@@ -1,0 +1,68 @@
+public int qtdNos(){
+  int cont = 0;
+  LSENode aux = this.primeiro;
+  while(aux!=nule){
+    cont ++;
+    aux = aux.getProx();
+  }
+  return cont;
+ }
+ 
+ 
+ listaCsomar(listaA,listaB);
+ 
+ 
+ public void somar (LSEInteirosA, LSEInteirosB) {
+  int tamA, tamB;
+  tamA = A.qtdNos();
+  tamB = B.qtdNos();
+  
+  if(tamA == 0 && tamB == 0) {
+    sout ("As duas listas estão vazias");
+  }
+  else if (tamA != tamB) {
+    sout ("As duas listas têm tamanhos diferents");
+  }
+  else {
+  }
+}
+
+{
+  int valor 
+  LSENode auxA = A.primeiro;
+  LSENode auxB = B.primeiro;
+  while (      )  {
+  valor = auxA.getInfo() + auxB.getInfo();
+  this.inserirfinal(valor);
+  auxA = auxA.getProx();
+  auxB = auxB.getProx();
+  }
+  this.exibir();
+ }
+ 
+ 
+ LSENode novo;
+ novo = new LSENode (valor);
+ if (this.primeiro == null) {
+  this.primeiro = novo;
+  fim = novo;
+ }
+ else {
+  fim.setProx (novo);
+  fim = novo;
+ }
+ 
+ 
+public class LSENode {
+ private Integer info;
+ private LSENode prox;
+ 
+public LSENOde (int valor) {
+  this.inf = valor;
+}
+
+}
+
+public class LSEInteiros
+  private LSENode primeiro;
+ 
