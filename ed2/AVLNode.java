@@ -1,3 +1,5 @@
+package ed2;
+
 class AVLNode<T extends Comparable <T>> {
     private AVLNode <T> left;
     private AVLNode <T> right;
