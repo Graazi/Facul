@@ -1,6 +1,6 @@
 package ed2;
 
-public public class AVLTree<T extends Comparable <T>> {
+public class AVLTree <T extends Comparable <T>> {
     private AVLNode<T> root;
     private boolean status;
 
@@ -10,7 +10,7 @@ public public class AVLTree<T extends Comparable <T>> {
 
     public void insert(T value) {
         if (this.isEmpty() == true) {
-        this.root = new AVLNode (value);
+        this.root = new AVLNode<T> (value);
         this.status = true;
     }
     else {
@@ -20,7 +20,7 @@ public public class AVLTree<T extends Comparable <T>> {
 
     private AVLNode<T> insertNode(AVLNode<T> r, T value) {
     if (r == null) {
-        r = new AVLNode (value);
+        r = new AVLNode<> (value);
         this.status = true;
         }
         else if (r.getInfo().compareTo(value) > 0) {
@@ -30,13 +30,11 @@ public public class AVLTree<T extends Comparable <T>> {
                     case 1: r.setFatBal(0); this.status = false;
                         break;
                         case 0: r.setFatBal(-1); break;
-                        case -1 : r = this.rotateRight(r);
+                        case -1 : r = this.rotateRigth(r);
                         break;
-                        }
-                         // fim switch
-                        }  // fim if
-                    } // fim if
-                }
+                        } // fim switch
+                    }  // fim if
+                } // fim if
                 else {
                     r.setRight(insertNode (r.getRight(),value));
                     if (this.status == true) {
@@ -50,9 +48,10 @@ public public class AVLTree<T extends Comparable <T>> {
                                 break;
                                 }// fim switch
                             } // fim if
+                            
                         } // fim else
                         return r;
-                     // fim insertNode
+                    // fim insertNode
 
     private AVLNode<T> rotateRight(AVLNode<T> a) {
         AVLNode<T> b, c;
@@ -92,12 +91,15 @@ public public class AVLTree<T extends Comparable <T>> {
     private AVLNode<T> rotateLeft (AVLNode<T> a) {
         AVLNode<T> b, c;
         b = a.getRight();
-        if (b.getFatBal() == 1) {        // rotação simples
+        if (b.getFatBal() == 1) {
+            // rotação simples
             a.setRight(b.getLeft());
             b.setLeft(a);
             a.setFatBal(0);
             a = b;
-        }else {                                   // rotação dupla
+        }
+        else {
+            // rotação dupla
             c = b.getLeft();
             b.setLeft(c.getRight());
             c.setRight(b);
@@ -118,3 +120,4 @@ public public class AVLTree<T extends Comparable <T>> {
         this.status = false;
         return a;
     }
+}

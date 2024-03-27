@@ -15,16 +15,16 @@ class AVLNode<T extends Comparable <T>> {
     T getInfo() {
         return this.info;
     }
-    void setLeft (AVLNode left) {
+    void setLeft (AVLNode<T> left) {
         this.left = left;
     }
-    AVLNode getLeft () {
+    AVLNode<T> getLeft () {
         return this.left;
     }
-    void setRight(AVLNode right) {
+    void setRight(AVLNode<T> right) {
         this.right = right;
     }
-    AVLNode getRight() {
+    AVLNode<T> getRight() {
         return this.right;
     }
     void setFatBal (int fatBal) {
