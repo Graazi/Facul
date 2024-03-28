@@ -1,3 +1,21 @@
+file://<WORKSPACE>/avl/AVLTree.java
+### java.util.NoSuchElementException: next on empty iterator
+
+occurred in the presentation compiler.
+
+presentation compiler configuration:
+Scala version: 3.3.1
+Classpath:
+<HOME>/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-library_3/3.3.1/scala3-library_3-3.3.1.jar [exists ], <HOME>/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.10/scala-library-2.13.10.jar [exists ]
+Options:
+
+
+
+action parameters:
+offset: 4151
+uri: file://<WORKSPACE>/avl/AVLTree.java
+text:
+```scala
 package avl;
 
 import java.util.ArrayDeque;
@@ -7,7 +25,7 @@ import java.util.Scanner;
 public class AVLTree<T extends Comparable<T>> {
     private AVLNode<T> raiz;
 
-    public void inserir(T valor, AVLNode<Integer> raiz2) {
+    public void inserir(T valor) {
         raiz = inserirRecursivamente(raiz, valor);
     }
 
@@ -19,7 +37,7 @@ public class AVLTree<T extends Comparable<T>> {
             node.esquerda = inserirRecursivamente(node.esquerda, valor);
         else if (valor.compareTo(node.valor) > 0)
             node.direita = inserirRecursivamente(node.direita, valor);
-        else // Valor existente, não faz nada
+        else // Valor já existe, não faz nada
             return node;
 
         node.altura = 1 + Math.max(getAltura(node.esquerda), getAltura(node.direita));
@@ -135,7 +153,7 @@ public class AVLTree<T extends Comparable<T>> {
 
         scanner.close();
 
-        System.out.println("\nPasseio em ordem:");
+        System.out.println("\nPasseio@@ em ordem:");
         tree.passeioEmOrdem();
 
         System.out.println("\n\nPasseio por nível:");
@@ -143,3 +161,25 @@ public class AVLTree<T extends Comparable<T>> {
     }
 }
 
+
+```
+
+
+
+#### Error stacktrace:
+
+```
+scala.collection.Iterator$$anon$19.next(Iterator.scala:973)
+	scala.collection.Iterator$$anon$19.next(Iterator.scala:971)
+	scala.collection.mutable.MutationTracker$CheckedIterator.next(MutationTracker.scala:76)
+	scala.collection.IterableOps.head(Iterable.scala:222)
+	scala.collection.IterableOps.head$(Iterable.scala:222)
+	scala.collection.AbstractIterable.head(Iterable.scala:933)
+	dotty.tools.dotc.interactive.InteractiveDriver.run(InteractiveDriver.scala:168)
+	scala.meta.internal.pc.MetalsDriver.run(MetalsDriver.scala:45)
+	scala.meta.internal.pc.HoverProvider$.hover(HoverProvider.scala:34)
+	scala.meta.internal.pc.ScalaPresentationCompiler.hover$$anonfun$1(ScalaPresentationCompiler.scala:352)
+```
+#### Short summary: 
+
+java.util.NoSuchElementException: next on empty iterator
