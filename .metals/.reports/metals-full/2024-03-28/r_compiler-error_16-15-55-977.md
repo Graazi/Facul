@@ -1,3 +1,21 @@
+file://<WORKSPACE>/avl/AVLTree.java
+### java.util.NoSuchElementException: next on empty iterator
+
+occurred in the presentation compiler.
+
+presentation compiler configuration:
+Scala version: 3.3.1
+Classpath:
+<HOME>/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-library_3/3.3.1/scala3-library_3-3.3.1.jar [exists ], <HOME>/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/2.13.10/scala-library-2.13.10.jar [exists ]
+Options:
+
+
+
+action parameters:
+offset: 3693
+uri: file://<WORKSPACE>/avl/AVLTree.java
+text:
+```scala
 package avl;
 
 import java.util.ArrayDeque;
@@ -121,11 +139,11 @@ public class AVLTree<T extends Comparable<T>> {
         }
     }
 
-    public static void main(String[] args) {
+   @@ public static void main(String[] args) {
         AVLTree<Integer> tree = new AVLTree<>();
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Digite os valores a serem inseridos na árvore:"); //-1 para finalizar
+        System.out.println("Digite os valores a serem inseridos na árvore (digite -1 para terminar):");
         while (true) {
             int valor = scanner.nextInt();
             if (valor == -1)
@@ -143,3 +161,25 @@ public class AVLTree<T extends Comparable<T>> {
     }
 }
 
+
+```
+
+
+
+#### Error stacktrace:
+
+```
+scala.collection.Iterator$$anon$19.next(Iterator.scala:973)
+	scala.collection.Iterator$$anon$19.next(Iterator.scala:971)
+	scala.collection.mutable.MutationTracker$CheckedIterator.next(MutationTracker.scala:76)
+	scala.collection.IterableOps.head(Iterable.scala:222)
+	scala.collection.IterableOps.head$(Iterable.scala:222)
+	scala.collection.AbstractIterable.head(Iterable.scala:933)
+	dotty.tools.dotc.interactive.InteractiveDriver.run(InteractiveDriver.scala:168)
+	scala.meta.internal.pc.MetalsDriver.run(MetalsDriver.scala:45)
+	scala.meta.internal.pc.HoverProvider$.hover(HoverProvider.scala:34)
+	scala.meta.internal.pc.ScalaPresentationCompiler.hover$$anonfun$1(ScalaPresentationCompiler.scala:352)
+```
+#### Short summary: 
+
+java.util.NoSuchElementException: next on empty iterator
