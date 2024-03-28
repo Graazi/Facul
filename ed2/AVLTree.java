@@ -120,4 +120,65 @@ public class AVLTree <T extends Comparable <T>> {
         this.status = false;
         return a;
     }
+    public void deletar(T value) {
+        this.root = remover(this.root, value);
+    }
+    
+    private AVLNode<T> remover(AVLNode<T> node, T key) {
+        if (node == null) {
+            return node;
+        } else if (key.compareTo(node.getInfo()) < 0) {
+            node.setLeft(remover(node.getLeft(), key));
+        } else if (key.compareTo(node.getInfo()) > 0) {
+            node.setRight(remover(node.getRight(), key));
+        } else {
+            if (node.getLeft() == null) {
+                if (this.status) {
+                    switch (node.getFatBal()) {
+                        case 1:
+                            node.setFatBal(0);
+                            this.status = false;
+                            break;
+                        case 0:
+                            node.setFatBal(-1);
+                            break;
+                        case -1:
+                            node = this.rotateRight(node);
+                            break;
+                    }
+                }
+                node = node.getRight();
+            } else if (node.getRight() == null) {
+                if (this.status) {
+                    switch (node.getFatBal()) {
+                        case 1:
+                            node = this.rotateLeft(node);
+                            break;
+                        case 0:
+                            node.setFatBal(1);
+                            break;
+                        case -1:
+                            node.setFatBal(0);
+                            this.status = false;
+                            break;
+                    }
+                }
+                node = node.getLeft();
+            } else {
+                AVLNode<T> mostLeftChild = encontrarMenorMaiorValor(node.getLeft());
+                node.setInfo(mostLeftChild.getInfo());
+                node.setLeft(remover(node.getLeft(), mostLeftChild.getInfo()));
+            }
+        }
+        return node;
+    }
+    
+    private AVLNode<T> encontrarMenorMaiorValor(AVLNode<T> node) {
+        AVLNode<T> atual = node;
+        while (atual.getRight() != null) {
+            atual = atual.getRight();
+        }
+        return atual;
+    }
+    
 }
